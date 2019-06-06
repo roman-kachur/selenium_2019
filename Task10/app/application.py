@@ -17,13 +17,16 @@ class LitecartApp:
 
     def campaign_products(self):
         self.campaign_products_page.open(self.base_url)
+        return self
 
     def add_items_to_cart(self):
         for item in range(data_provider.items_to_add):
             self.campaign_products_page.add_items_to_cart()
+        return self
 
     def purge_cart(self):
         self.cart_page.purge()
+        return self
 
     def quit(self):
         time.sleep(3)
