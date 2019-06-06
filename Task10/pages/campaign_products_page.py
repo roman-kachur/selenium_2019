@@ -14,6 +14,7 @@ class CampaignProductsPage:
     def open(self, base_url):
         self.driver.get(base_url)
         self.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, 'a[href="#campaign-products"]')))
+        return self
 
     def add_items_to_cart(self):
         cart_locator = 'div#cart span.quantity'
@@ -32,3 +33,4 @@ class CampaignProductsPage:
         self.wait.until(ec.text_to_be_present_in_element((By.CSS_SELECTOR, cart_locator), str(prev_cart_items + quantity)))
         new_cart_items = int(self.driver.find_element_by_css_selector(cart_locator).text)
         assert new_cart_items - prev_cart_items == quantity
+        return self

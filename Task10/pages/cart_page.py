@@ -19,6 +19,6 @@ class CartPage:
             assert len(remove_buttons) > 0
             remove_buttons[0].click()
             self.wait.until(ec.staleness_of(table))
-
         self.driver.find_element_by_css_selector('p a[href]').click()
         assert int(self.driver.find_element_by_css_selector(cart_locator).text) == 0
+        return self
